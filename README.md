@@ -78,6 +78,21 @@ Type: `string`
 
 The following input variables are optional (have default values):
 
+### <a name="input_associated_vnet"></a> [associated\_vnet](#input\_associated\_vnet)
+
+Description: An object describing the Virtual Network to associate with the resource. This includes the following properties:
+- `resource_id` - The resource ID of the Virtual Network.
+
+Type:
+
+```hcl
+object({
+    resource_id = string
+})
+```
+
+Default: `null`
+
 ### <a name="input_customer_managed_key"></a> [customer\_managed\_key](#input\_customer\_managed\_key)
 
 Description: A map describing customer-managed keys to associate with the resource. This includes the following properties:
