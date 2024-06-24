@@ -13,3 +13,23 @@ variable "location" {
   default     = "uksouth"
   description = "The location for the resources."
 }
+
+variable "subnets" {
+  description = "A map of subnet definitions"
+  type        = map(object({
+    name            = string
+    address_prefix  = string
+    service_endpoints = list(string)
+    nsg_id          = string
+  }))
+}
+
+variable "vnet_name" {
+  description = "The name of the Virtual Network"
+  type        = string
+}
+
+variable "vnet_address_space" {
+  description = "The address space that is used by the Virtual Network"
+  type        = list(string)
+}

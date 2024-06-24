@@ -1,13 +1,15 @@
 module "vnet" {
-  source  = "Azure/terraform-azurerm-vnet/azurerm"
-  version = "~> 0.4"
+  source  = "Azure/vnet/azurerm"
+  version = "4.1.0"
 
-  resource_group_name = var.resource_group_name
-  location            = var.location
-  name                = var.vnet_name
+  resource_group_name = var.resource_group.name
+  vnet_name                = local.vnet_name
+  vnet_location            = var.location
+  use_for_each = true
+
   address_space       = var.vnet_address_space
-
-  subnets = var.subnets
+  subnet_names        = [for s in var.subnets : s.name]
+  subnet_prefixes = [for s in var.subnets : s.address_prefix]
 
   tags = var.tags
 
